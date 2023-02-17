@@ -23,5 +23,12 @@
 ![image](https://user-images.githubusercontent.com/125440689/218981294-848f311a-5944-41b4-84d1-20628543956e.png)
 
 </b>
+<b> Добавление продукта
+![image](https://user-images.githubusercontent.com/125440689/219666458-9cbab1ad-adba-4860-84e0-9f2a2b69fb37.png)
+
+![image](https://user-images.githubusercontent.com/125440689/219666554-b4d511b2-f35a-4504-8cd5-5ef0f7efaecd.png)
+
+
+</b>
 
 
