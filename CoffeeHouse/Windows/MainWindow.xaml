@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:CoffeeHouse"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="Honeydew">
+        <Button x:Name="PBtn" 
+                Content="Добавить продукт" 
+                HorizontalAlignment="Left" 
+                Margin="20,19,0,0" 
+                VerticalAlignment="Top" 
+                Width="115" Height="25" Click="PBtn_Click" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

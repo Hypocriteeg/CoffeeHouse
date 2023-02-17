@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeHouse.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace CoffeeHouse
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void PBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditProduct1 registrationWindow1 = new AddEditProduct1();
+            registrationWindow1.Show();
+            this.Close();
         }
     }
 }

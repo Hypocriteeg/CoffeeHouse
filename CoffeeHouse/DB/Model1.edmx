@@ -22,9 +22,9 @@
           <Key>
             <PropertyRef Name="IdCategory" />
           </Key>
-          <Property Name="IdCategory" Type="int" Nullable="false" />
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -62,6 +62,7 @@
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="IdCategory" Type="int" Nullable="false" />
           <Property Name="IdSuppliers" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -98,7 +99,7 @@
           <Key>
             <PropertyRef Name="IdSuppliers" />
           </Key>
-          <Property Name="IdSuppliers" Type="int" Nullable="false" />
+          <Property Name="IdSuppliers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Address" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="PhoneNumber" Type="char" MaxLength="11" Nullable="false" />
@@ -343,7 +344,7 @@
           </Key>
           <Property Name="IdCategory" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Client">
@@ -389,6 +390,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK_Product_Suppliers" FromRole="Product" ToRole="Suppliers" />
           <NavigationProperty Name="SaleProduct" Relationship="Self.FK_SaleProduct_Product" FromRole="Product" ToRole="SaleProduct" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -727,6 +729,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="CoffeeHouseModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Price" ColumnName="Price" />

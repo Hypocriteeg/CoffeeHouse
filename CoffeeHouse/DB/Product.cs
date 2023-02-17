@@ -25,6 +25,7 @@ namespace CoffeeHouse.DB
         public decimal Price { get; set; }
         public int IdCategory { get; set; }
         public int IdSuppliers { get; set; }
+        public string image { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Suppliers Suppliers { get; set; }
