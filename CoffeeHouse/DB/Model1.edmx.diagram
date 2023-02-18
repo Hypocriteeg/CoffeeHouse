@@ -5,27 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4cc8866588fa4306b215208ce27840fd" Name="Diagram1">
-        <EntityTypeShape EntityType="CoffeeHouseModel.Authorization" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Category" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Client" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Gender" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Post" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Product" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Sale" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.SaleProduct" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Staff" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.Suppliers" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoffeeHouseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Client_Authorization" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Staff_Authorization" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Sale_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Staff_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Staff_Post" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Product_Suppliers" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_SaleProduct_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_Sale_Staff" ManuallyRouted="false" />
-        <AssociationConnector Association="CoffeeHouseModel.FK_SaleProduct_Sale" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Authorization" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Category" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Client" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Gender" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Post" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Product" Width="1.5" PointX="5.25" PointY="13.375" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Sale" Width="1.5" PointX="5.25" PointY="5.75" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.SaleProduct" Width="1.5" PointX="7.5" PointY="5.75" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Staff" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.Suppliers" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="CoffeeHouseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Client_Authorization" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Staff_Authorization" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Product_Category" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Sale_Client" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Staff_Gender" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Staff_Post" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Product_Suppliers" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_SaleProduct_Product" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_Sale_Staff" />
+        <AssociationConnector Association="CoffeeHouseModel.FK_SaleProduct_Sale" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -57,12 +57,12 @@
           <Key>
             <PropertyRef Name="IdProduct" />
           </Key>
-          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="IdCategory" Type="int" Nullable="false" />
           <Property Name="IdSuppliers" Type="int" Nullable="false" />
-          <Property Name="image" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="image" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -323,308 +323,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CoffeeHouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Authorization">
-          <Key>
-            <PropertyRef Name="IdAuthorization" />
-          </Key>
-          <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NumberPhone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="253" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Authorization" FromRole="Authorization" ToRole="Client" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Authorization" FromRole="Authorization" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="IdCategory" />
-          </Key>
-          <Property Name="IdCategory" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Client">
-          <Key>
-            <PropertyRef Name="IDClient" />
-          </Key>
-          <Property Name="IDClient" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="253" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Authorization" Relationship="Self.FK_Client_Authorization" FromRole="Client" ToRole="Authorization" />
-          <NavigationProperty Name="Sale" Relationship="Self.FK_Sale_Client" FromRole="Client" ToRole="Sale" />
-        </EntityType>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="IdGender" />
-          </Key>
-          <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Gender" FromRole="Gender" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="Post">
-          <Key>
-            <PropertyRef Name="IdPost" />
-          </Key>
-          <Property Name="IdPost" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Post" FromRole="Post" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="IdProduct" />
-          </Key>
-          <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IdCategory" Type="Int32" Nullable="false" />
-          <Property Name="IdSuppliers" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Product_Suppliers" FromRole="Product" ToRole="Suppliers" />
-          <NavigationProperty Name="SaleProduct" Relationship="Self.FK_SaleProduct_Product" FromRole="Product" ToRole="SaleProduct" />
-          <Property Name="image" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="IdSale" />
-          </Key>
-          <Property Name="IdSale" Type="Int32" Nullable="false" />
-          <Property Name="IdClient" Type="Int32" Nullable="false" />
-          <Property Name="IdStaff" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Sale_Client" FromRole="Sale" ToRole="Client" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_Sale_Staff" FromRole="Sale" ToRole="Staff" />
-          <NavigationProperty Name="SaleProduct" Relationship="Self.FK_SaleProduct_Sale" FromRole="Sale" ToRole="SaleProduct" />
-        </EntityType>
-        <EntityType Name="SaleProduct">
-          <Key>
-            <PropertyRef Name="IdSaleProduct" />
-          </Key>
-          <Property Name="IdSaleProduct" Type="Int32" Nullable="false" />
-          <Property Name="IdSale" Type="Int32" Nullable="false" />
-          <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_SaleProduct_Product" FromRole="SaleProduct" ToRole="Product" />
-          <NavigationProperty Name="Sale" Relationship="Self.FK_SaleProduct_Sale" FromRole="SaleProduct" ToRole="Sale" />
-        </EntityType>
-        <EntityType Name="Staff">
-          <Key>
-            <PropertyRef Name="IdStaff" />
-          </Key>
-          <Property Name="IdStaff" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="253" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="IdPost" Type="Int32" Nullable="false" />
-          <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Authorization" Relationship="Self.FK_Staff_Authorization" FromRole="Staff" ToRole="Authorization" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Staff_Gender" FromRole="Staff" ToRole="Gender" />
-          <NavigationProperty Name="Post" Relationship="Self.FK_Staff_Post" FromRole="Staff" ToRole="Post" />
-          <NavigationProperty Name="Sale" Relationship="Self.FK_Sale_Staff" FromRole="Staff" ToRole="Sale" />
-        </EntityType>
-        <EntityType Name="Suppliers">
-          <Key>
-            <PropertyRef Name="IdSuppliers" />
-          </Key>
-          <Property Name="IdSuppliers" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="INN" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Suppliers" FromRole="Suppliers" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK_Client_Authorization">
-          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Authorization">
-              <PropertyRef Name="IdAuthorization" />
-            </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IdAuthorization" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Staff_Authorization">
-          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Authorization">
-              <PropertyRef Name="IdAuthorization" />
-            </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="IdAuthorization" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="IdCategory" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdCategory" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sale_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="IDClient" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="IdClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Staff_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="IdGender" />
-            </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="IdGender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Staff_Post">
-          <End Role="Post" Type="Self.Post" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="IdPost" />
-            </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="IdPost" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Suppliers">
-          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Suppliers">
-              <PropertyRef Name="IdSuppliers" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdSuppliers" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SaleProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="SaleProduct" Type="Self.SaleProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="IdProduct" />
-            </Principal>
-            <Dependent Role="SaleProduct">
-              <PropertyRef Name="IdProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sale_Staff">
-          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
-          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Staff">
-              <PropertyRef Name="IdStaff" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="IdStaff" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SaleProduct_Sale">
-          <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
-          <End Role="SaleProduct" Type="Self.SaleProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sale">
-              <PropertyRef Name="IdSale" />
-            </Principal>
-            <Dependent Role="SaleProduct">
-              <PropertyRef Name="IdSale" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Client" EntityType="Self.Client" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Post" EntityType="Self.Post" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="Sale" EntityType="Self.Sale" />
-          <EntitySet Name="SaleProduct" EntityType="Self.SaleProduct" />
-          <EntitySet Name="Staff" EntityType="Self.Staff" />
-          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Client_Authorization" Association="Self.FK_Client_Authorization">
-            <End Role="Authorization" EntitySet="Authorization" />
-            <End Role="Client" EntitySet="Client" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Staff_Authorization" Association="Self.FK_Staff_Authorization">
-            <End Role="Authorization" EntitySet="Authorization" />
-            <End Role="Staff" EntitySet="Staff" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sale_Client" Association="Self.FK_Sale_Client">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="Sale" EntitySet="Sale" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Staff_Gender" Association="Self.FK_Staff_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Staff" EntitySet="Staff" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Staff_Post" Association="Self.FK_Staff_Post">
-            <End Role="Post" EntitySet="Post" />
-            <End Role="Staff" EntitySet="Staff" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Suppliers" Association="Self.FK_Product_Suppliers">
-            <End Role="Suppliers" EntitySet="Suppliers" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SaleProduct_Product" Association="Self.FK_SaleProduct_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="SaleProduct" EntitySet="SaleProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sale_Staff" Association="Self.FK_Sale_Staff">
-            <End Role="Staff" EntitySet="Staff" />
-            <End Role="Sale" EntitySet="Sale" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SaleProduct_Sale" Association="Self.FK_SaleProduct_Sale">
-            <End Role="Sale" EntitySet="Sale" />
-            <End Role="SaleProduct" EntitySet="SaleProduct" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -655,6 +354,57 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Authorization" EntityType="CoffeeHouseModel.Authorization" />
+          <EntitySet Name="Category" EntityType="CoffeeHouseModel.Category" />
+          <EntitySet Name="Client" EntityType="CoffeeHouseModel.Client" />
+          <EntitySet Name="Gender" EntityType="CoffeeHouseModel.Gender" />
+          <EntitySet Name="Post" EntityType="CoffeeHouseModel.Post" />
+          <EntitySet Name="Product" EntityType="CoffeeHouseModel.Product" />
+          <EntitySet Name="Sale" EntityType="CoffeeHouseModel.Sale" />
+          <EntitySet Name="SaleProduct" EntityType="CoffeeHouseModel.SaleProduct" />
+          <EntitySet Name="Staff" EntityType="CoffeeHouseModel.Staff" />
+          <EntitySet Name="Suppliers" EntityType="CoffeeHouseModel.Suppliers" />
+          <EntitySet Name="sysdiagrams" EntityType="CoffeeHouseModel.sysdiagrams" />
+          <AssociationSet Name="FK_Client_Authorization" Association="CoffeeHouseModel.FK_Client_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Authorization" Association="CoffeeHouseModel.FK_Staff_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="CoffeeHouseModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Client" Association="CoffeeHouseModel.FK_Sale_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Gender" Association="CoffeeHouseModel.FK_Staff_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Post" Association="CoffeeHouseModel.FK_Staff_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Suppliers" Association="CoffeeHouseModel.FK_Product_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleProduct_Product" Association="CoffeeHouseModel.FK_SaleProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SaleProduct" EntitySet="SaleProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Staff" Association="CoffeeHouseModel.FK_Sale_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleProduct_Sale" Association="CoffeeHouseModel.FK_SaleProduct_Sale">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="SaleProduct" EntitySet="SaleProduct" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -667,133 +417,262 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="IdAuthorization" />
+          </Key>
+          <Property Name="IdAuthorization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPhone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="253" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="CoffeeHouseModel.FK_Client_Authorization" FromRole="Authorization" ToRole="Client" />
+          <NavigationProperty Name="Staff" Relationship="CoffeeHouseModel.FK_Staff_Authorization" FromRole="Authorization" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="CoffeeHouseModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IDClient" />
+          </Key>
+          <Property Name="IDClient" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="253" FixedLength="false" Unicode="true" />
+          <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorization" Relationship="CoffeeHouseModel.FK_Client_Authorization" FromRole="Client" ToRole="Authorization" />
+          <NavigationProperty Name="Sale" Relationship="CoffeeHouseModel.FK_Sale_Client" FromRole="Client" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="CoffeeHouseModel.FK_Staff_Gender" FromRole="Gender" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="IdPost" />
+          </Key>
+          <Property Name="IdPost" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="CoffeeHouseModel.FK_Staff_Post" FromRole="Post" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IdCategory" Type="Int32" Nullable="false" />
+          <Property Name="IdSuppliers" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Category" Relationship="CoffeeHouseModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Suppliers" Relationship="CoffeeHouseModel.FK_Product_Suppliers" FromRole="Product" ToRole="Suppliers" />
+          <NavigationProperty Name="SaleProduct" Relationship="CoffeeHouseModel.FK_SaleProduct_Product" FromRole="Product" ToRole="SaleProduct" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="IdSale" />
+          </Key>
+          <Property Name="IdSale" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="CoffeeHouseModel.FK_Sale_Client" FromRole="Sale" ToRole="Client" />
+          <NavigationProperty Name="Staff" Relationship="CoffeeHouseModel.FK_Sale_Staff" FromRole="Sale" ToRole="Staff" />
+          <NavigationProperty Name="SaleProduct" Relationship="CoffeeHouseModel.FK_SaleProduct_Sale" FromRole="Sale" ToRole="SaleProduct" />
+        </EntityType>
+        <EntityType Name="SaleProduct">
+          <Key>
+            <PropertyRef Name="IdSaleProduct" />
+          </Key>
+          <Property Name="IdSaleProduct" Type="Int32" Nullable="false" />
+          <Property Name="IdSale" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="CoffeeHouseModel.FK_SaleProduct_Product" FromRole="SaleProduct" ToRole="Product" />
+          <NavigationProperty Name="Sale" Relationship="CoffeeHouseModel.FK_SaleProduct_Sale" FromRole="SaleProduct" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="253" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="IdPost" Type="Int32" Nullable="false" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorization" Relationship="CoffeeHouseModel.FK_Staff_Authorization" FromRole="Staff" ToRole="Authorization" />
+          <NavigationProperty Name="Gender" Relationship="CoffeeHouseModel.FK_Staff_Gender" FromRole="Staff" ToRole="Gender" />
+          <NavigationProperty Name="Post" Relationship="CoffeeHouseModel.FK_Staff_Post" FromRole="Staff" ToRole="Post" />
+          <NavigationProperty Name="Sale" Relationship="CoffeeHouseModel.FK_Sale_Staff" FromRole="Staff" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="IdSuppliers" />
+          </Key>
+          <Property Name="IdSuppliers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="INN" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="CoffeeHouseModel.FK_Product_Suppliers" FromRole="Suppliers" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Client_Authorization">
+          <End Type="CoffeeHouseModel.Authorization" Role="Authorization" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="IdAuthorization" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Authorization">
+          <End Type="CoffeeHouseModel.Authorization" Role="Authorization" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="IdAuthorization" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Type="CoffeeHouseModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Client">
+          <End Type="CoffeeHouseModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Gender">
+          <End Type="CoffeeHouseModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Post">
+          <End Type="CoffeeHouseModel.Post" Role="Post" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="IdPost" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Suppliers">
+          <End Type="CoffeeHouseModel.Suppliers" Role="Suppliers" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="IdSuppliers" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IdSuppliers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleProduct_Product">
+          <End Type="CoffeeHouseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.SaleProduct" Role="SaleProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="SaleProduct">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Staff">
+          <End Type="CoffeeHouseModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleProduct_Sale">
+          <End Type="CoffeeHouseModel.Sale" Role="Sale" Multiplicity="1" />
+          <End Type="CoffeeHouseModel.SaleProduct" Role="SaleProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="IdSale" />
+            </Principal>
+            <Dependent Role="SaleProduct">
+              <PropertyRef Name="IdSale" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище CoffeeHouseModelContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Authorization">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Authorization">
-              <MappingFragment StoreEntitySet="Authorization">
-                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Client">
-              <MappingFragment StoreEntitySet="Client">
-                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Post">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Post">
-              <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
-                <ScalarProperty Name="IdSuppliers" ColumnName="IdSuppliers" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sale">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Sale">
-              <MappingFragment StoreEntitySet="Sale">
-                <ScalarProperty Name="IdSale" ColumnName="IdSale" />
-                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SaleProduct">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.SaleProduct">
-              <MappingFragment StoreEntitySet="SaleProduct">
-                <ScalarProperty Name="IdSaleProduct" ColumnName="IdSaleProduct" />
-                <ScalarProperty Name="IdSale" ColumnName="IdSale" />
-                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Staff">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Staff">
-              <MappingFragment StoreEntitySet="Staff">
-                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
-                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
-                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.Suppliers">
-              <MappingFragment StoreEntitySet="Suppliers">
-                <ScalarProperty Name="IdSuppliers" ColumnName="IdSuppliers" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CoffeeHouseModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище CoffeeHouseModel.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище CoffeeHouseModel.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище CoffeeHouseModel.sp_dropdiagram" />
@@ -818,6 +697,127 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище CoffeeHouseModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище CoffeeHouseModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="IdSuppliers" ColumnName="IdSuppliers" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdSale" ColumnName="IdSale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleProduct">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.SaleProduct">
+              <MappingFragment StoreEntitySet="SaleProduct">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdSale" ColumnName="IdSale" />
+                <ScalarProperty Name="IdSaleProduct" ColumnName="IdSaleProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.Suppliers">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdSuppliers" ColumnName="IdSuppliers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CoffeeHouseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

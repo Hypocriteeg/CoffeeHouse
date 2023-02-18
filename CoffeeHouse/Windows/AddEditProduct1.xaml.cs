@@ -51,13 +51,15 @@ namespace CoffeeHouse.Windows
             product.IdCategory = (MBTypeProduct.SelectedItem as Category).IdCategory;
             if (pathPhoto != null)
             {
-                product.image = Convert.ToString(File.ReadAllBytes(pathPhoto));
+                product.image = File.ReadAllBytes(pathPhoto);
             }
 
             context.Product.Add(product);
 
             context.SaveChanges();
             MessageBox.Show("OK");
+
+
         }
 
         private void BtnChooseImage_Click(object sender, RoutedEventArgs e)

@@ -8,6 +8,8 @@
         Title="AddEditProduct1"   Height="1000" 
         Width="500">
     <Grid Background="Honeydew">
+        
+
         <StackPanel  Orientation="Vertical" 
                     Margin="40 0 40 0 " >
 
@@ -125,12 +127,19 @@
                     Content="Добавить" 
                     Click="BtnAdd_Click"
                    >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
 
             </Button>
+            
 
 
 
         </StackPanel>
+      
 
     </Grid>
 </Window>
