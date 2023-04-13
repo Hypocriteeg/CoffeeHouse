@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CoffeeHouse.ClassHelper;
 using static CoffeeHouse.ClassHelper.EFClass;
+using static CoffeeHouse.ClassHelper.StaffDataContext;
 
 namespace CoffeeHouse.Windows
 {
@@ -40,6 +41,7 @@ namespace CoffeeHouse.Windows
             .FirstOrDefault();
             if (authUser != null)
             {
+                staff = authUser.Staff.FirstOrDefault();
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
             }

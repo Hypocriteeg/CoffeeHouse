@@ -10,19 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static CoffeeHouse.ClassHelper.EFClass;
 
-namespace CoffeeHouse.Pages.Directors
+namespace CoffeeHouse.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для ProductPage.xaml
+    /// Логика взаимодействия для AccountList.xaml
     /// </summary>
-    public partial class ProductPage : Page
+    public partial class AccountList : Window
     {
-        public ProductPage()
+        public AccountList()
         {
             InitializeComponent();
+            dgAcc.ItemsSource = context.Authorization.ToList();
         }
     }
 }

@@ -7,17 +7,48 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="Honeydew">
+        <TextBlock x:Name="tbFI"
+                  Height="50"
+                   Width="200"
+                   HorizontalAlignment="Right"
+                   >
+        </TextBlock>
         <Button x:Name="PBtn" 
-                Content="Добавить продукт" 
+                Content="Продукты" 
                 HorizontalAlignment="Left" 
                 Margin="20,19,0,0" 
                 VerticalAlignment="Top" 
-                Width="115" Height="25" Click="PBtn_Click" >
+                Width="125" Height="25" Click="PBtn_Click" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
+        <Button x:Name="PBStaff" 
+                Content="Сотрудники" 
+                HorizontalAlignment="Left" 
+                Margin="20,49,0,0" 
+                VerticalAlignment="Top" 
+                Width="125" Height="25" Click="PBStaff_Click" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="PBClient" 
+                Content="Аккаунты" 
+                HorizontalAlignment="Left" 
+                Margin="20,79,0,0" 
+                VerticalAlignment="Top" 
+                Width="125" Height="25" Click="PBClient_Click"  >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </Window>

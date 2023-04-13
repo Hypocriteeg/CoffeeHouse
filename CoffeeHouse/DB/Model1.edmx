@@ -30,7 +30,7 @@
           <Key>
             <PropertyRef Name="IDClient" />
           </Key>
-          <Property Name="IDClient" Type="int" Nullable="false" />
+          <Property Name="IDClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -43,14 +43,14 @@
           <Key>
             <PropertyRef Name="IdGender" />
           </Key>
-          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="IdGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="IdPost" />
           </Key>
-          <Property Name="IdPost" Type="int" Nullable="false" />
+          <Property Name="IdPost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
@@ -85,7 +85,7 @@
           <Key>
             <PropertyRef Name="IdStaff" />
           </Key>
-          <Property Name="IdStaff" Type="int" Nullable="false" />
+          <Property Name="IdStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />

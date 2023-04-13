@@ -1,0 +1,45 @@
+﻿<Window x:Class="CoffeeHouse.Windows.AccountList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoffeeHouse.Windows"
+        mc:Ignorable="d"
+        Title="AccountList" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список аккаунтов"
+                   HorizontalAlignment="Center"
+                   FontSize="30"
+                   FontWeight="Bold"/>
+
+        <DataGrid x:Name="dgAcc" Grid.Row="2" 
+                  ItemsSource="{Binding View}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdAuthorization}" Header="Id" Width="50"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия" Width="50"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество" Width="50"/>
+                <DataGridTextColumn Binding="{Binding NumberPhone}" Header="Телефон" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Почта" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Password}" Header="Пароль" Width="50"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnAdd"
+                Grid.Row="3"
+                Height="30"
+                Width="50"
+                HorizontalAlignment="Right" 
+                ></Button>
+
+    </Grid>
+</Window>
