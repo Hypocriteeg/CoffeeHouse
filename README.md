@@ -31,5 +31,28 @@
 
 
 </b>
+<b> Список товаров
+![image](https://user-images.githubusercontent.com/125440689/232035677-fe9239b6-7233-48dd-9191-f33150d71aa7.png)
+
+</b>
+
+<b> Вход по ролям
+
+![image](https://user-images.githubusercontent.com/125440689/232035957-a63ab8ec-c57e-4a25-ade8-a5cf5b6263b9.png)
+
+![image](https://user-images.githubusercontent.com/125440689/232036023-c0a3e894-9c9b-438a-8f20-0473ad2bca5c.png)
+
+![image](https://user-images.githubusercontent.com/125440689/232036098-65fbf965-663b-4d1d-8ee2-64e509d998a9.png)
+
+![image](https://user-images.githubusercontent.com/125440689/232036141-0d62ca26-2d70-44ad-ba6c-743e90521ef2.png)
+
+
+
+
+
+
+
+
+</b>
 
 
